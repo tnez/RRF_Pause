@@ -1,0 +1,15 @@
+//
+// Prefix header for all source files of the 'Pause' target in the 'Pause' project.
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
+
+// DEBUG-ONLY LOGGING
+/////////////////////
+#ifdef DEBUG
+#  define DLog(...) NSLog(__VA_ARGS__)
+#else
+#  define DLog(...) /* */
+#endif

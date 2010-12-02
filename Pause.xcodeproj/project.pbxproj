@@ -1,0 +1,552 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		401F076C1254F8FB00E31086 /* TKComponentConfigurationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5EBF1250B59C00437416 /* TKComponentConfigurationView.m */; };
+		401F076D1254F8FB00E31086 /* TKComponentOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5EC11250B59C00437416 /* TKComponentOption.m */; };
+		401F076E1254F8FB00E31086 /* TKComponentStringOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5EC31250B59C00437416 /* TKComponentStringOption.m */; };
+		401F076F1254F8FB00E31086 /* TKComponentNumberOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5EC51250B59C00437416 /* TKComponentNumberOption.m */; };
+		401F07701254F8FB00E31086 /* TKComponentBooleanOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5EC71250B59C00437416 /* TKComponentBooleanOption.m */; };
+		401F07711254F8FB00E31086 /* TKComponentPathOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5EC91250B59C00437416 /* TKComponentPathOption.m */; };
+		401F07721254F8FB00E31086 /* Mock_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5ED41250B59C00437416 /* Mock_AppDelegate.m */; };
+		401F07731254F8FB00E31086 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5ED51250B59C00437416 /* main.m */; };
+		401F07741254F8FB00E31086 /* TKComponentEnumOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5ECB1250B59C00437416 /* TKComponentEnumOption.m */; };
+		401F07811254F97C00E31086 /* TKUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40340010122D5809003CABA9 /* TKUtility.framework */; };
+		401F078E1254F9C800E31086 /* TKUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 40340010122D5809003CABA9 /* TKUtility.framework */; };
+		4034000D122D57F9003CABA9 /* RRFPauseMainNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4034000C122D57F9003CABA9 /* RRFPauseMainNib.xib */; };
+		40340011122D5809003CABA9 /* TKUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40340010122D5809003CABA9 /* TKUtility.framework */; };
+		404B5EE01250B8C500437416 /* EnumOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ECF1250B59C00437416 /* EnumOption.xib */; };
+		404B5EE11250B8C500437416 /* PathOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ED11250B59C00437416 /* PathOption.xib */; };
+		404B5EE21250B8C500437416 /* MockApplication.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ECD1250B59C00437416 /* MockApplication.xib */; };
+		404B5EE31250B8C500437416 /* StringOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ED21250B59C00437416 /* StringOption.xib */; };
+		404B5EE41250B8C500437416 /* NumberOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ED01250B59C00437416 /* NumberOption.xib */; };
+		404B5EE51250B8C500437416 /* BooleanOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ECE1250B59C00437416 /* BooleanOption.xib */; };
+		4063B2B512551F490096BFE1 /* RRFPause.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D5B49B6048680CD000E48DA /* RRFPause.bundle */; };
+		40A8AFD412A84460008E712C /* RRFPauseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8AFD312A84460008E712C /* RRFPauseController.m */; };
+		40A8AFDB12A84522008E712C /* RRFPauseManifest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40A8AFDA12A84522008E712C /* RRFPauseManifest.plist */; };
+		40A8AFDC12A84522008E712C /* RRFPauseManifest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40A8AFDA12A84522008E712C /* RRFPauseManifest.plist */; };
+		40C04C52122D5921003E8D1C /* TKUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 40340010122D5809003CABA9 /* TKUtility.framework */; };
+		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
+		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		404B5EDE1250B7D400437416 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
+			remoteInfo = "RRF Bundle";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		401F07981254F9DA00E31086 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				401F078E1254F9C800E31086 /* TKUtility.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4063B2B412551F3C0096BFE1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4063B2B512551F490096BFE1 /* RRFPause.bundle in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40C04C4D122D5918003E8D1C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				40C04C52122D5921003E8D1C /* TKUtility.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		40340006122D575E003CABA9 /* RRFPause_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRFPause_Prefix.pch; sourceTree = "<group>"; };
+		4034000C122D57F9003CABA9 /* RRFPauseMainNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RRFPauseMainNib.xib; sourceTree = "<group>"; };
+		40340010122D5809003CABA9 /* TKUtility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TKUtility.framework; sourceTree = "<group>"; };
+		404B5EB61250B54E00437416 /* MockApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		404B5EB81250B54E00437416 /* MockApplication-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MockApplication-Info.plist"; path = "Library/Xcode/Project Templates/Bundle/RRF Bundle/MockApplication-Info.plist"; sourceTree = DEVELOPER_DIR; };
+		404B5EBE1250B59C00437416 /* TKComponentConfigurationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKComponentConfigurationView.h; sourceTree = "<group>"; };
+		404B5EBF1250B59C00437416 /* TKComponentConfigurationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKComponentConfigurationView.m; sourceTree = "<group>"; };
+		404B5EC01250B59C00437416 /* TKComponentOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKComponentOption.h; sourceTree = "<group>"; };
+		404B5EC11250B59C00437416 /* TKComponentOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKComponentOption.m; sourceTree = "<group>"; };
+		404B5EC21250B59C00437416 /* TKComponentStringOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKComponentStringOption.h; sourceTree = "<group>"; };
+		404B5EC31250B59C00437416 /* TKComponentStringOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKComponentStringOption.m; sourceTree = "<group>"; };
+		404B5EC41250B59C00437416 /* TKComponentNumberOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKComponentNumberOption.h; sourceTree = "<group>"; };
+		404B5EC51250B59C00437416 /* TKComponentNumberOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKComponentNumberOption.m; sourceTree = "<group>"; };
+		404B5EC61250B59C00437416 /* TKComponentBooleanOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKComponentBooleanOption.h; sourceTree = "<group>"; };
+		404B5EC71250B59C00437416 /* TKComponentBooleanOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKComponentBooleanOption.m; sourceTree = "<group>"; };
+		404B5EC81250B59C00437416 /* TKComponentPathOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKComponentPathOption.h; sourceTree = "<group>"; };
+		404B5EC91250B59C00437416 /* TKComponentPathOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKComponentPathOption.m; sourceTree = "<group>"; };
+		404B5ECA1250B59C00437416 /* TKComponentEnumOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKComponentEnumOption.h; sourceTree = "<group>"; };
+		404B5ECB1250B59C00437416 /* TKComponentEnumOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TKComponentEnumOption.m; sourceTree = "<group>"; };
+		404B5ECD1250B59C00437416 /* MockApplication.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MockApplication.xib; path = "Library/Xcode/Project Templates/Bundle/RRF Bundle/MockApplication.xib"; sourceTree = DEVELOPER_DIR; };
+		404B5ECE1250B59C00437416 /* BooleanOption.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BooleanOption.xib; path = "Library/Xcode/Project Templates/Bundle/RRF Bundle/BooleanOption.xib"; sourceTree = DEVELOPER_DIR; };
+		404B5ECF1250B59C00437416 /* EnumOption.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EnumOption.xib; path = "Library/Xcode/Project Templates/Bundle/RRF Bundle/EnumOption.xib"; sourceTree = DEVELOPER_DIR; };
+		404B5ED01250B59C00437416 /* NumberOption.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NumberOption.xib; path = "Library/Xcode/Project Templates/Bundle/RRF Bundle/NumberOption.xib"; sourceTree = DEVELOPER_DIR; };
+		404B5ED11250B59C00437416 /* PathOption.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PathOption.xib; path = "Library/Xcode/Project Templates/Bundle/RRF Bundle/PathOption.xib"; sourceTree = DEVELOPER_DIR; };
+		404B5ED21250B59C00437416 /* StringOption.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = StringOption.xib; path = "Library/Xcode/Project Templates/Bundle/RRF Bundle/StringOption.xib"; sourceTree = DEVELOPER_DIR; };
+		404B5ED31250B59C00437416 /* Mock_AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mock_AppDelegate.h; sourceTree = "<group>"; };
+		404B5ED41250B59C00437416 /* Mock_AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mock_AppDelegate.m; sourceTree = "<group>"; };
+		404B5ED51250B59C00437416 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		40A8AFD212A84460008E712C /* RRFPauseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRFPauseController.h; sourceTree = "<group>"; };
+		40A8AFD312A84460008E712C /* RRFPauseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRFPauseController.m; sourceTree = "<group>"; };
+		40A8AFDA12A84522008E712C /* RRFPauseManifest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RRFPauseManifest.plist; sourceTree = "<group>"; };
+		8D5B49B6048680CD000E48DA /* RRFPause.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RRFPause.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2F7E65807B2D6F200F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		404B5EB41250B54E00437416 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				401F07811254F97C00E31086 /* TKUtility.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D5B49B3048680CD000E48DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */,
+				40340011122D5809003CABA9 /* TKUtility.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* RRF Bundle */ = {
+			isa = PBXGroup;
+			children = (
+				404B5EBD1250B59C00437416 /* Testing */,
+				08FB77AFFE84173DC02AAC07 /* Classes */,
+				32C88E010371C26100C91783 /* Other Sources */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
+				19C28FB8FE9D52D311CA2CBB /* Products */,
+			);
+			name = "RRF Bundle";
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
+				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
+			);
+			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				40A8AFDA12A84522008E712C /* RRFPauseManifest.plist */,
+				4034000C122D57F9003CABA9 /* RRFPauseMainNib.xib */,
+				8D5B49B7048680CD000E48DA /* Info.plist */,
+				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77AFFE84173DC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				40A8AFD212A84460008E712C /* RRFPauseController.h */,
+				40A8AFD312A84460008E712C /* RRFPauseController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7AEFEA557BF11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40340010122D5809003CABA9 /* TKUtility.framework */,
+				089C167FFE841241C02AAC07 /* AppKit.framework */,
+				D2F7E65807B2D6F200F64583 /* CoreData.framework */,
+				089C1672FE841209C02AAC07 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FB8FE9D52D311CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D5B49B6048680CD000E48DA /* RRFPause.bundle */,
+				404B5EB61250B54E00437416 /* MockApplication.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32C88E010371C26100C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				40340006122D575E003CABA9 /* RRFPause_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		404B5EBD1250B59C00437416 /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				404B5ECC1250B59C00437416 /* Resources */,
+				404B5EBE1250B59C00437416 /* TKComponentConfigurationView.h */,
+				404B5EBF1250B59C00437416 /* TKComponentConfigurationView.m */,
+				404B5EC01250B59C00437416 /* TKComponentOption.h */,
+				404B5EC11250B59C00437416 /* TKComponentOption.m */,
+				404B5EC21250B59C00437416 /* TKComponentStringOption.h */,
+				404B5EC31250B59C00437416 /* TKComponentStringOption.m */,
+				404B5EC41250B59C00437416 /* TKComponentNumberOption.h */,
+				404B5EC51250B59C00437416 /* TKComponentNumberOption.m */,
+				404B5EC61250B59C00437416 /* TKComponentBooleanOption.h */,
+				404B5EC71250B59C00437416 /* TKComponentBooleanOption.m */,
+				404B5EC81250B59C00437416 /* TKComponentPathOption.h */,
+				404B5EC91250B59C00437416 /* TKComponentPathOption.m */,
+				404B5ECA1250B59C00437416 /* TKComponentEnumOption.h */,
+				404B5ED31250B59C00437416 /* Mock_AppDelegate.h */,
+				404B5ED41250B59C00437416 /* Mock_AppDelegate.m */,
+				404B5ED51250B59C00437416 /* main.m */,
+				404B5ECB1250B59C00437416 /* TKComponentEnumOption.m */,
+			);
+			name = Testing;
+			sourceTree = "<group>";
+		};
+		404B5ECC1250B59C00437416 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				404B5ECD1250B59C00437416 /* MockApplication.xib */,
+				404B5ECE1250B59C00437416 /* BooleanOption.xib */,
+				404B5ECF1250B59C00437416 /* EnumOption.xib */,
+				404B5ED01250B59C00437416 /* NumberOption.xib */,
+				404B5ED11250B59C00437416 /* PathOption.xib */,
+				404B5ED21250B59C00437416 /* StringOption.xib */,
+				404B5EB81250B54E00437416 /* MockApplication-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		404B5EB51250B54E00437416 /* MockApplication */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 404B5EBB1250B54F00437416 /* Build configuration list for PBXNativeTarget "MockApplication" */;
+			buildPhases = (
+				404B5EB21250B54E00437416 /* Resources */,
+				404B5EB31250B54E00437416 /* Sources */,
+				404B5EB41250B54E00437416 /* Frameworks */,
+				401F07981254F9DA00E31086 /* CopyFiles */,
+				4063B2B412551F3C0096BFE1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				404B5EDF1250B7D400437416 /* PBXTargetDependency */,
+			);
+			name = MockApplication;
+			productName = MockApplication;
+			productReference = 404B5EB61250B54E00437416 /* MockApplication.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8D5B49AC048680CD000E48DA /* Pause */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB913A08733D840010E9CD /* Build configuration list for PBXNativeTarget "Pause" */;
+			buildPhases = (
+				8D5B49AF048680CD000E48DA /* Resources */,
+				8D5B49B1048680CD000E48DA /* Sources */,
+				8D5B49B3048680CD000E48DA /* Frameworks */,
+				40C04C4D122D5918003E8D1C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pause;
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = "RRF Bundle";
+			productReference = 8D5B49B6048680CD000E48DA /* RRFPause.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "Pause" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* RRF Bundle */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D5B49AC048680CD000E48DA /* Pause */,
+				404B5EB51250B54E00437416 /* MockApplication */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		404B5EB21250B54E00437416 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				404B5EE01250B8C500437416 /* EnumOption.xib in Resources */,
+				404B5EE11250B8C500437416 /* PathOption.xib in Resources */,
+				404B5EE21250B8C500437416 /* MockApplication.xib in Resources */,
+				404B5EE31250B8C500437416 /* StringOption.xib in Resources */,
+				404B5EE41250B8C500437416 /* NumberOption.xib in Resources */,
+				404B5EE51250B8C500437416 /* BooleanOption.xib in Resources */,
+				40A8AFDC12A84522008E712C /* RRFPauseManifest.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D5B49AF048680CD000E48DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */,
+				4034000D122D57F9003CABA9 /* RRFPauseMainNib.xib in Resources */,
+				40A8AFDB12A84522008E712C /* RRFPauseManifest.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		404B5EB31250B54E00437416 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				401F076C1254F8FB00E31086 /* TKComponentConfigurationView.m in Sources */,
+				401F076D1254F8FB00E31086 /* TKComponentOption.m in Sources */,
+				401F076E1254F8FB00E31086 /* TKComponentStringOption.m in Sources */,
+				401F076F1254F8FB00E31086 /* TKComponentNumberOption.m in Sources */,
+				401F07701254F8FB00E31086 /* TKComponentBooleanOption.m in Sources */,
+				401F07711254F8FB00E31086 /* TKComponentPathOption.m in Sources */,
+				401F07721254F8FB00E31086 /* Mock_AppDelegate.m in Sources */,
+				401F07731254F8FB00E31086 /* main.m in Sources */,
+				401F07741254F8FB00E31086 /* TKComponentEnumOption.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D5B49B1048680CD000E48DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40A8AFD412A84460008E712C /* RRFPauseController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		404B5EDF1250B7D400437416 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D5B49AC048680CD000E48DA /* Pause */;
+			targetProxy = 404B5EDE1250B7D400437416 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C167EFE841241C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB913B08733D840010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = RRFPause_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				OTHER_CFLAGS = "-DDEBUG";
+				PRODUCT_NAME = RRFPause;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		1DEB913C08733D840010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = RRFPause_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_NAME = RRFPause;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		1DEB913F08733D840010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		1DEB914008733D840010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+		404B5EB91250B54F00437416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/Library/Xcode/Project Templates/Bundle/RRF Bundle\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "MockApplication-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_CFLAGS = "-DDEBUG";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = MockApplication;
+			};
+			name = Debug;
+		};
+		404B5EBA1250B54F00437416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/Library/Xcode/Project Templates/Bundle/RRF Bundle\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "MockApplication-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = MockApplication;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB913A08733D840010E9CD /* Build configuration list for PBXNativeTarget "Pause" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB913B08733D840010E9CD /* Debug */,
+				1DEB913C08733D840010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "Pause" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB913F08733D840010E9CD /* Debug */,
+				1DEB914008733D840010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		404B5EBB1250B54F00437416 /* Build configuration list for PBXNativeTarget "MockApplication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				404B5EB91250B54F00437416 /* Debug */,
+				404B5EBA1250B54F00437416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

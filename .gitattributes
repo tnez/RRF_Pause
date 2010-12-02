@@ -1,0 +1,2 @@
+# treat the project file as binary
+*.pbxproj -crlf -diff -merge

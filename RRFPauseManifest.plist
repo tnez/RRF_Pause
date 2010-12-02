@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TKComponentType</key>
+	<integer>0</integer>
+	<key>TKComponentName</key>
+	<string>Pause</string>
+	<key>TKComponentBundleName</key>
+	<string>ComRrfComponentPause</string>
+	<key>TKComponentBundleIdentifier</key>
+	<string>com.rrf.component.Pause</string>
+	<key>TKComponentOptions</key>
+	<array>
+		<dict>
+			<key>optionIdentifier</key>
+			<string>RRFPauseTaskName</string>
+			<key>displayName</key>
+			<string>Task Name</string>
+			<key>type</key>
+			<integer>0</integer>
+			<key>default</key>
+			<string>Pause</string>
+			<key>allowsEdit</key>
+			<true/>
+			<key>allowsNull</key>
+			<false/>
+			<key>help</key>
+			<string>The task name will be appended to the name of the data file</string>
+		</dict>
+		<dict>
+			<key>optionIdentifier</key>
+			<string>RRFPauseDataDirectory</string>
+			<key>displayName</key>
+			<string>Data Directory</string>
+			<key>type</key>
+			<integer>3</integer>
+			<key>default</key>
+			<string></string>
+			<key>isDirectory</key>
+			<true/>
+			<key>allowsEdit</key>
+			<true/>
+			<key>allowsNull</key>
+			<false/>
+			<key>help</key>
+			<string>Directory where component will save data file - Initial value is set to session global</string>
+		</dict>
+		<dict>
+			<key>optionIdentifier</key>
+			<string>RRFPauseDuration</string>
+			<key>displayName</key>
+			<string>Duration From Start</string>
+			<key>type</key>
+			<integer>1</integer>
+			<key>default</key>
+			<integer>60</integer>
+			<key>allowsEdit</key>
+			<true/>
+			<key>allowsNull</key>
+			<false/>
+			<key>min</key>
+			<integer>5</integer>
+			<key>max</key>
+			<integer>86400</integer>
+			<key>help</key>
+			<string>The duration in seconds for which the component will pause (interpretation is dependent upon mode of operation).</string>
+		</dict>
+		<dict>
+			<key>optionIdentifier</key>
+			<string>RRFPauseMode</string>
+			<key>displayName</key>
+			<string>Mode</string>
+			<key>type</key>
+			<integer>4</integer>
+			<key>default</key>
+			<integer>0</integer>
+			<key>allowsEdit</key>
+			<true/>
+			<key>allowsNull</key>
+			<false/>
+			<key>enumeratedList</key>
+			<array>
+				<string>From This Point</string>
+				<string>From Beginning of Last Component</string>
+				<string>To The Next Wall Clock Interval</string>
+			</array>
+			<key>help</key>
+			<string>The method by which the pause duration will be evaluated</string>
+		</dict>
+	</array>
+</dict>
+</plist>
