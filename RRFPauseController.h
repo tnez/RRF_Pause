@@ -15,7 +15,7 @@
     // PROTOCOL MEMBERS
     ///////////////////
     NSDictionary *definition;
-  id <TKComponentBundleDelegate> delegate;
+    id delegate;
     NSString *errorLog;
     IBOutlet NSView *view;
 
