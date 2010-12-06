@@ -15,7 +15,7 @@
     // PROTOCOL MEMBERS
     ///////////////////
     NSDictionary *definition;
-    id delegate;
+  id <TKComponentBundleDelegate> delegate;
     NSString *errorLog;
     IBOutlet NSView *view;
 
@@ -165,7 +165,6 @@ extern NSString * const RRFPauseModeKey;
 // HERE YOU DEFINE KEYS FOR CONSTANT STRINGS
 ////////////////////////////////////////////
 extern NSString * const RRFPauseMainNibNameKey;
-extern NSString * const RRFPauseTargetSelectorKey;
 
 
 #pragma mark Enumerated Values

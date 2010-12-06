@@ -36,7 +36,7 @@
  Start the component - will receive this message from the component controller
  */
 - (void)begin {
-  [self performSelector:@selector(RRFPauseTargetSelectorKey)
+  [self performSelector:@selector(end)
              withObject:self afterDelay:secondsToPause];
   NSLog(@"Begin pause for %d seconds",secondsToPause);
 }
@@ -232,7 +232,6 @@ NSString * const RRFPauseModeKey = @"RRFPauseMode";
 // HERE YOU DEFINE KEYS FOR CONSTANT STRINGS //
 ///////////////////////////////////////////////
 NSString * const RRFPauseMainNibNameKey = @"RRFPauseMainNib";
-NSString * const RRFPauseTargetSelectorKey = @"end";
 
 
 @end
