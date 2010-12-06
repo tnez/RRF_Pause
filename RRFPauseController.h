@@ -145,7 +145,10 @@
  */
 - (void)registerError: (NSString *)theError;
 
-
+/**
+ End the pause
+ */
+- (void)end;
 
 
 #pragma mark Preference Keys
@@ -154,18 +157,15 @@
 ////////////////////////////////////////////////////////////
 extern NSString * const RRFPauseTaskNameKey;
 extern NSString * const RRFPauseDataDirectoryKey;
-
-
+extern NSString * const RRFPauseDurationKey;
+extern NSString * const RRFPauseModeKey;
 
 
 #pragma mark Internal Strings
 // HERE YOU DEFINE KEYS FOR CONSTANT STRINGS
 ////////////////////////////////////////////
 extern NSString * const RRFPauseMainNibNameKey;
-extern NSString * const RRFPauseDurationKey;
-extern NSString * const RRFPauseModeKey;
-
-
+extern NSString * const RRFPauseTargetSelectorKey;
 
 
 #pragma mark Enumerated Values

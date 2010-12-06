@@ -36,8 +36,9 @@
  Start the component - will receive this message from the component controller
  */
 - (void)begin {
-  // TODO: schedule the end of the pause (register for notification)
-  // TODO: start a loop to update time prompt (non-precise, low processor)
+  [self performSelector:@selector(RRFPauseTargetSelectorKey)
+             withObject:self afterDelay:secondsToPause];
+  NSLog(@"Begin pause for %d seconds",secondsToPause);
 }
 
 /**
@@ -113,35 +114,39 @@
         // TODO: seconds to pause = now + duration
         secondsToPause = 
         [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue];
+      NSLog(@"Pause mode selected: RRFPauseModeFromNow");
         break;
         
       case RRFPauseModeFromLastComponent:
         // TODO: get the time value from the registry file
         [self registerError:@"Specified pause mode is not yet supported"];
+      NSLog(@"Pause mode selected: RRFPauseModeFromLastComponent");
         break;
 
       case RRFPauseModeToNextWallClock:
         // TODO: determine the next wall clock interval
         [self registerError:@"Specified pause mode is not yet supported"];
+      NSLog(@"Pause mode selected: RRFPauseModeToNextWallClock");      
         break;
 
       default:
         [self registerError:@"Invalid mode of operation"];
+      NSLog(@"Pause mode selected: invalid mode of operation");
   }
   // TODO: check that time value is accecptable
   if(NO) {
     [self registerError:@"Invalid pause parameter"];
   }
-    
-    // LOAD NIB
-    ///////////
-    if([NSBundle loadNibNamed:RRFPauseMainNibNameKey owner:self]) {
-        // SETUP THE INTERFACE VALUES
-        /////////////////////////////
-        
-    } else { // NIB DID NOT LOAD
-        [self registerError:@"Could not load Nib file"];
-    }
+
+  // LOAD NIB
+  ///////////
+  if([NSBundle loadNibNamed:RRFPauseMainNibNameKey owner:self]) {
+      // SETUP THE INTERFACE VALUES
+      /////////////////////////////
+      
+  } else { // NIB DID NOT LOAD
+      [self registerError:@"Could not load Nib file"];
+  }
 }
 
 /**
@@ -204,7 +209,13 @@
                        stringByAppendingString:@"\n"]];
 }
 
-        
+/**
+ End the pause
+ */
+- (void)end {
+  // notify our delegate that we are done
+  [delegate componentDidFinish:self];
+}
 
 #pragma mark Preference Keys
 // HERE YOU DEFINE KEY REFERENCES FOR ANY PREFERENCE VALUES
@@ -221,6 +232,7 @@ NSString * const RRFPauseModeKey = @"RRFPauseMode";
 // HERE YOU DEFINE KEYS FOR CONSTANT STRINGS //
 ///////////////////////////////////////////////
 NSString * const RRFPauseMainNibNameKey = @"RRFPauseMainNib";
+NSString * const RRFPauseTargetSelectorKey = @"end";
 
 
 @end
