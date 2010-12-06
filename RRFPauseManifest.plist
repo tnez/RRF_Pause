@@ -7,7 +7,7 @@
 	<key>TKComponentName</key>
 	<string>Pause</string>
 	<key>TKComponentBundleName</key>
-	<string>ComRrfComponentPause</string>
+	<string>RRFPause</string>
 	<key>TKComponentBundleIdentifier</key>
 	<string>com.rrf.component.Pause</string>
 	<key>TKComponentOptions</key>
