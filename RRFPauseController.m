@@ -36,9 +36,9 @@
    Start the component - will receive this message from the component controller
 */
 - (void)begin {
-  [self performSelector:@selector(end)
+  [self performSelector:@selector(end) 
              withObject:self afterDelay:secondsToPause];
-  NSLog(@"Begin pause for %d seconds",secondsToPause);
+  DLog(@"Begin pause for %d seconds",secondsToPause);
 }
 
 /**
@@ -75,8 +75,8 @@
 }
 
 /**
-   Perform actions required to recover from crash using the given raw data passed
-   as string
+   Perform actions required to recover from crash using the given raw data
+   passed as string
 */
 - (void)recover {
   // if no recovery is needed, nothing need be done here
@@ -111,31 +111,36 @@
   switch(RRFPauseModeEval) {
       
   case RRFPauseModeFromNow:
-    // TODO: seconds to pause = now + duration
-    secondsToPause = 
-      [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue];
-    NSLog(@"Pause mode selected: RRFPauseModeFromNow");
-    break;
+      // TODO: seconds to pause = now + duration
+      secondsToPause = 
+        [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue];
+      DLog(@"Pause mode selected: RRFPauseModeFromNow");
+      break;
         
   case RRFPauseModeFromLastComponent:
-    // TODO: get the time value from the registry file
-    [self registerError:@"Specified pause mode is not yet supported"];
-    NSLog(@"Pause mode selected: RRFPauseModeFromLastComponent");
-    break;
+      // TODO: get the time value from the registry file
+      [self registerError:@"Specified pause mode is not yet supported"];
+      DLog(@"Pause mode selected: RRFPauseModeFromLastComponent");
+      break;
 
-  case RRFPauseModeToNextWallClock:
-    // TODO: determine the next wall clock interval
-    [self registerError:@"Specified pause mode is not yet supported"];
-    NSLog(@"Pause mode selected: RRFPauseModeToNextWallClock");      
-    break;
+    case RRFPauseModeToABSTime:
+      DLog(@"Pause mode selected: RRFPauseModeToABSTime");            
+      // evaluate the time given as an absolute time value
+      // and determine the amount of seconds required for pause
+      secondsToPause =
+      [self secondsToPauseForABSTime:
+       [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue]];
+      break;
 
   default:
-    [self registerError:@"Invalid mode of operation"];
-    NSLog(@"Pause mode selected: invalid mode of operation");
+      [self registerError:@"Invalid mode of operation"];
+      DLog(@"Pause mode selected: invalid mode of operation");
   }
-  // TODO: check that time value is accecptable
-  if(NO) {
-    [self registerError:@"Invalid pause parameter"];
+  // if value of pause seconds is not acceptable...
+  if(secondsToPause<1) {
+    NSLog(@"Invalid pause parameter... defaulting to 1 second");
+    // set the pause to 1 second and continue
+    secondsToPause = 1;
   }
 
   // LOAD NIB
@@ -216,6 +221,45 @@
   // notify our delegate that we are done
   [delegate componentDidFinish:self];
 }
+
+/**
+ Evaluate the specified second values as an even time division
+ ex: - if 60 then pause until the next wall-clock minute
+ - if 3600 (60*60) pause until the next wall-clock hour
+ - if 1600 (60*30) pause until the next wall-clock half-hour
+ Note: This method first finds the magnitude relative to seconds, ie. hours
+ would be second-order magnitude, days would be third-order, and then evaluates
+ the scalar value for said magnitude (1 hour, 7 hours, etc.). After this the
+ next occurence of this magnitude and scalar is sought and scheduled.
+ */
+- (NSInteger)secondsToPauseForABSTime: (NSInteger)militaryTime {
+  // if given time is invalid, register the error
+  if( 0 > militaryTime || militaryTime > 2400 ) { 
+    [self registerError:@"ABS time parameter is invalid"];
+  }
+  // create now and parse now into components
+  unsigned timeUnits = NSYearCalendarUnit | NSMonthCalendarUnit |
+  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit;
+  NSDateComponents *comps = [[NSCalendar currentCalendar]
+                             components:timeUnits
+                             fromDate:[NSDate date]];
+  DLog(@"Current Time {day:%d hrs: %d min: %d}",
+       [comps day],[comps hour],[comps minute]);
+  // parse our input time value
+  NSInteger min = militaryTime % 100 % 60;
+  NSInteger hrs = (militaryTime / 100) % 24;
+  // modify our components to match
+  [comps setMinute:min];
+  [comps setHour:hrs];
+  DLog(@"Scheduled Time {day:%d hrs: %d min: %d}",
+       [comps day],[comps hour],[comps minute]);
+  // create target date from components
+  NSDate *targetDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+  DLog(@"Target Time %@",[targetDate description]);
+  // return the time interval between the two dates
+  return [targetDate timeIntervalSinceNow];
+}
+  
 
 #pragma mark Preference Keys
 // HERE YOU DEFINE KEY REFERENCES FOR ANY PREFERENCE VALUES

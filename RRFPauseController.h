@@ -21,7 +21,7 @@
 
   // ADDITIONAL MEMBERS
   /////////////////////
-  NSUInteger secondsToPause;
+  NSInteger secondsToPause;
   bool shouldStartFromRegValue;
   IBOutlet NSTextField *timeDisplay;
 }
@@ -150,6 +150,18 @@
 */
 - (void)end;
 
+/**
+ Return the number of seconds to the time given (represented in military time 
+ to minute precision).
+ Ex: Current Time = 11:59, Given Time = 12:30
+      return: (12:30 - 11:59) <===> 31 * 60 <===> 1860
+ This method returns a negative value if the absolute time is in the past
+ Ex: Current Time = 11:59, Given Time = 11:30
+      return: (11:30 - 11:59) <===> -29 * 30 <===> -1740
+*/
+- (NSInteger)secondsToPauseForABSTime: (NSInteger)givenSeconds;
+
+
 
 #pragma mark Preference Keys
 // HERE YOU DEFINE KEY REFERENCES FOR ANY PREFERENCE VALUES
@@ -173,7 +185,7 @@ extern NSString * const RRFPauseMainNibNameKey;
 enum {
   RRFPauseModeFromNow           = 0,
   RRFPauseModeFromLastComponent = 1,
-  RRFPauseModeToNextWallClock   = 2
+  RRFPauseModeToABSTime   = 2
 };
 
 @end

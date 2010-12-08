@@ -83,7 +83,7 @@
 			<array>
 				<string>From This Point</string>
 				<string>From Beginning of Last Component</string>
-				<string>To The Next Wall Clock Interval</string>
+				<string>Absolute Time (0000 specified in military)</string>
 			</array>
 			<key>help</key>
 			<string>The method by which the pause duration will be evaluated</string>
