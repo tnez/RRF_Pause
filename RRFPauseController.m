@@ -113,24 +113,24 @@
   case RRFPauseModeFromNow:
       secondsToPause = 
         [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue];
-      DLog(@"Pause mode selected: RRFPauseModeFromNow");
+      DLog(@"RRFPause - Mode:RRFPauseModeFromNow");
       break;
         
   case RRFPauseModeFromLastComponent:
-      // TODO: get the time value from the registry file
+      // TODO: Pause From Last Component Mode
       [self registerError:@"Specified pause mode is not yet supported"];
-      DLog(@"Pause mode selected: RRFPauseModeFromLastComponent");
+      DLog(@"RRFPause - Mode:RRFPauseModeFromLastComponent");
       break;
 
     case RRFPauseModeToABSTime:
-      DLog(@"Pause mode selected: RRFPauseModeToABSTime");            
+      DLog(@"RRFPause - Mode:RRFPauseModeToABSTime");            
       secondsToPause =
       [self secondsToPauseForABSTime:
        [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue]];
       break;
       
     case RRFPauseModeToNextInterval:
-      DLog(@"Pause mode selected: RRFPauseModeToNextInterval");
+      DLog(@"RRFPause - Mode:RRFPauseModeToNextInterval");
       secondsToPause = 
       [self secondsToPauseForNextInterval:
        [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue]];
@@ -138,15 +138,15 @@
 
   default:
       [self registerError:@"Invalid mode of operation"];
-      DLog(@"Pause mode selected: invalid mode of operation");
+      DLog(@"RRFPause - Mode:Invalid mode selected");
   }
   // if value of pause seconds is not acceptable...
   if(secondsToPause<1) {
-    NSLog(@"Invalid pause parameter... defaulting to 1 second");
+    NSLog(@"RRFPause - Invalid pause parameter... defaulting to 1 second");
     // set the pause to 1 second and continue
     secondsToPause = 1;
   }
-
+  
   // LOAD NIB
   ///////////
   if([NSBundle loadNibNamed:RRFPauseMainNibNameKey owner:self]) {
@@ -156,6 +156,10 @@
   } else { // NIB DID NOT LOAD
     [self registerError:@"Could not load Nib file"];
   }
+  
+  // logging
+  NSLog(@"RRFPause - Target Time: %@",
+        [[NSDate dateWithTimeIntervalSinceNow:secondsToPause] description]);
 }
 
 /**
@@ -222,6 +226,9 @@
    End the pause
 */
 - (void)end {
+  // logging
+  NSLog(@"RRFPause - Actual Time: %@",
+        [[NSDate date] description]);
   // notify our delegate that we are done
   [delegate componentDidFinish:self];
 }
@@ -239,7 +246,7 @@
 - (NSInteger)secondsToPauseForABSTime: (NSInteger)militaryTime {
   // if given time is invalid, register the error
   if( 0 > militaryTime || militaryTime > 2400 ) { 
-    [self registerError:@"ABS time parameter is invalid"];
+    [self registerError:@"RRFPause(ABSTime) - Given time is invalid"];
   }
   // create now and parse now into components
   unsigned timeUnits = NSYearCalendarUnit | NSMonthCalendarUnit |
@@ -247,7 +254,7 @@
   NSDateComponents *comps = [[NSCalendar currentCalendar]
                              components:timeUnits
                              fromDate:[NSDate date]];
-  DLog(@"Current Time {day:%d hrs: %d min: %d}",
+  DLog(@"RRFPause(ABSTime) - Current Time {day:%d hrs: %d min: %d}",
        [comps day],[comps hour],[comps minute]);
   // parse our input time value
   NSInteger min = militaryTime % 100 % 60;
@@ -255,11 +262,11 @@
   // modify our components to match
   [comps setMinute:min];
   [comps setHour:hrs];
-  DLog(@"Scheduled Time {day:%d hrs: %d min: %d}",
+  DLog(@"RRFPause(ABSTime) - Scheduled Time {day:%d hrs: %d min: %d}",
        [comps day],[comps hour],[comps minute]);
   // create target date from components
   NSDate *targetDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
-  DLog(@"Target Time %@",[targetDate description]);
+  DLog(@"RRFPause(ABSTime) - Target Time %@",[targetDate description]);
   // return the time interval between the two dates
   return [targetDate timeIntervalSinceNow];
 }
@@ -290,53 +297,55 @@
   NSDateComponents *comps = [[NSCalendar currentCalendar]
                              components:timeUnits
                              fromDate:[NSDate date]];
-  DLog(@"Current Time {day:%d hrs: %d min: %d sec: %d}",
+  DLog(@"RRFPause(RelInterval) - Current Time {day:%d hrs:%d min:%d sec:%d}",
        [comps day],[comps hour],[comps minute],[comps second]);
   // generate target times
   NSInteger targetHrs = givenSeconds / 60 / 60 % 24;
   NSInteger targetMins = givenSeconds / 60 % 60;
   NSInteger targetSecs = givenSeconds % 60;
-  DLog(@"Given Hours: %d",targetHrs);
-  DLog(@"Given Mins: %d",targetMins);
-  DLog(@"Given Seconds: %d",targetSecs);
+  DLog(@"RRFPause(RelInterval) - Given Hours:%d",targetHrs);
+  DLog(@"RRFPause(RelInterval) - Given Mins:%d",targetMins);
+  DLog(@"RRFPause(RelInterval) - Given Seconds:%d",targetSecs);
   // prepare and return values
   if(targetHrs) {
-    DLog(@"Handler: Hours Parser");
+    
+    DLog(@"RRFPause(RelInterval) - Handler:Hours Parser");
     [comps setHour:[comps hour]+targetHrs];
     [comps setMinute:targetMins];
     [comps setSecond:targetSecs];
-    DLog(@"Target Time %@",
+    DLog(@"RRFPause(RelInterval) - Target Time:%@",
          [[[NSCalendar currentCalendar] dateFromComponents:comps]
           description]);
     return [[[NSCalendar currentCalendar] dateFromComponents:comps]
             timeIntervalSinceNow];
   }
   if(targetMins) {
-    DLog(@"Handler: Minutes Parser");
+    DLog(@"RRFPause(RelInterval) - Handler:Minutes Parser");
     if(targetMins<=[comps minute]) {
       [comps setHour:[comps hour]+1];
     }
     [comps setMinute:targetMins];
     [comps setSecond:targetSecs];
-    DLog(@"Target Time %@",
+    DLog(@"RRFPause(RelInterval) - Target Time:%@",
          [[[NSCalendar currentCalendar] dateFromComponents:comps]
           description]);
     return [[[NSCalendar currentCalendar] dateFromComponents:comps]
             timeIntervalSinceNow];
   }
   if(targetSecs) {
-    DLog(@"Handler: Seconds Parser");
+    DLog(@"RRFPause(RelInterval) - Handler:Seconds Parser");
     if(!targetSecs<=[comps second]) {
       [comps setMinute:[comps minute]+1];
     }
     [comps setSecond:targetSecs];
-    DLog(@"Target Time %@",
+    DLog(@"RRFPause(RelInterval) - Target Time:%@",
          [[[NSCalendar currentCalendar] dateFromComponents:comps]
           description]);
     return [[[NSCalendar currentCalendar] dateFromComponents:comps]
             timeIntervalSinceNow];
   }
   // ...as a default and fail-safe, return -1 to represent invalid param
+  DLog(@"RRFPause(RelInterval) - Given time is invalid");
   return -1;
 }      
 
