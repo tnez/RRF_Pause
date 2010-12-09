@@ -84,6 +84,7 @@
 				<string>From This Point</string>
 				<string>From Beginning of Last Component</string>
 				<string>Absolute Time (0000 specified in military)</string>
+				<string>Next Interval As Relative Time (in seconds)</string>
 			</array>
 			<key>help</key>
 			<string>The method by which the pause duration will be evaluated</string>

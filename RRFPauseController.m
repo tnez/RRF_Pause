@@ -111,7 +111,6 @@
   switch(RRFPauseModeEval) {
       
   case RRFPauseModeFromNow:
-      // TODO: seconds to pause = now + duration
       secondsToPause = 
         [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue];
       DLog(@"Pause mode selected: RRFPauseModeFromNow");
@@ -125,10 +124,15 @@
 
     case RRFPauseModeToABSTime:
       DLog(@"Pause mode selected: RRFPauseModeToABSTime");            
-      // evaluate the time given as an absolute time value
-      // and determine the amount of seconds required for pause
       secondsToPause =
       [self secondsToPauseForABSTime:
+       [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue]];
+      break;
+      
+    case RRFPauseModeToNextInterval:
+      DLog(@"Pause mode selected: RRFPauseModeToNextInterval");
+      secondsToPause = 
+      [self secondsToPauseForNextInterval:
        [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue]];
       break;
 
@@ -259,7 +263,84 @@
   // return the time interval between the two dates
   return [targetDate timeIntervalSinceNow];
 }
-  
+
+/**
+ Evaluate the time given as an interval of time in terms of seconds
+ Example:
+
+          60 ===> the next minute
+         120 ===> the minute after next
+        3600 ===> the next hour
+      3600*2 ===> the hour after next
+    3600*3/2 ===> the next hour and a half mark that occurs
+
+ In all of these cases, the next interval could be as little as
+ seconds away... so the next hour and a half mark would be at a
+ maximum one hour and a half away and at a minimum one second away
+ ...however, two hours away (3600*2) would be at a minimum one hour
+ and one second away and at a maximum two hours away
+
+ THIS IS A CONFUSING AND AMBIGUOUS CONFIGURATION!!!
+*/
+- (NSInteger)secondsToPauseForNextInterval: (NSInteger)givenSeconds {
+  // create now and parse now into components
+  unsigned timeUnits = NSYearCalendarUnit | NSMonthCalendarUnit |
+  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit |
+  NSSecondCalendarUnit;
+  NSDateComponents *comps = [[NSCalendar currentCalendar]
+                             components:timeUnits
+                             fromDate:[NSDate date]];
+  DLog(@"Current Time {day:%d hrs: %d min: %d sec: %d}",
+       [comps day],[comps hour],[comps minute],[comps second]);
+  // generate target times
+  NSInteger targetHrs = givenSeconds / 60 / 60 % 24;
+  NSInteger targetMins = givenSeconds / 60 % 60;
+  NSInteger targetSecs = givenSeconds % 60;
+  DLog(@"Given Hours: %d",targetHrs);
+  DLog(@"Given Mins: %d",targetMins);
+  DLog(@"Given Seconds: %d",targetSecs);
+  // prepare and return values
+  if(targetHrs) {
+    DLog(@"Handler: Hours Parser");
+    [comps setHour:[comps hour]+targetHrs];
+    [comps setMinute:targetMins];
+    [comps setSecond:targetSecs];
+    DLog(@"Target Time %@",
+         [[[NSCalendar currentCalendar] dateFromComponents:comps]
+          description]);
+    return [[[NSCalendar currentCalendar] dateFromComponents:comps]
+            timeIntervalSinceNow];
+  }
+  if(targetMins) {
+    DLog(@"Handler: Minutes Parser");
+    if(targetMins<=[comps minute]) {
+      [comps setHour:[comps hour]+1];
+    }
+    [comps setMinute:targetMins];
+    [comps setSecond:targetSecs];
+    DLog(@"Target Time %@",
+         [[[NSCalendar currentCalendar] dateFromComponents:comps]
+          description]);
+    return [[[NSCalendar currentCalendar] dateFromComponents:comps]
+            timeIntervalSinceNow];
+  }
+  if(targetSecs) {
+    DLog(@"Handler: Seconds Parser");
+    if(!targetSecs<=[comps second]) {
+      [comps setMinute:[comps minute]+1];
+    }
+    [comps setSecond:targetSecs];
+    DLog(@"Target Time %@",
+         [[[NSCalendar currentCalendar] dateFromComponents:comps]
+          description]);
+    return [[[NSCalendar currentCalendar] dateFromComponents:comps]
+            timeIntervalSinceNow];
+  }
+  // ...as a default and fail-safe, return -1 to represent invalid param
+  return -1;
+}      
+
+
 
 #pragma mark Preference Keys
 // HERE YOU DEFINE KEY REFERENCES FOR ANY PREFERENCE VALUES

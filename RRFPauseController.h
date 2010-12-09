@@ -161,6 +161,25 @@
 */
 - (NSInteger)secondsToPauseForABSTime: (NSInteger)givenSeconds;
 
+/**
+ Evaluate the time given as an interval of time in terms of seconds
+ Example:
+ 
+ 60 ===> the next minute
+ 120 ===> the minute after next
+ 3600 ===> the next hour
+ 3600*2 ===> the hour after next
+ 3600*3/2 ===> the next hour and a half mark that occurs
+ 
+ In all of these cases, the next interval could be as little as
+ seconds away... so the next hour and a half mark would be at a
+ maximum one hour and a half away and at a minimum one second away
+ ...however, two hours away (3600*2) would be at a minimum one hour
+ and one second away and at a maximum two hours away
+ 
+ THIS IS A CONFUSING AND AMBIGUOUS CONFIGURATION!!!
+ */
+- (NSInteger)secondsToPauseForNextInterval: (NSInteger)givenSeconds;
 
 
 #pragma mark Preference Keys
@@ -185,7 +204,8 @@ extern NSString * const RRFPauseMainNibNameKey;
 enum {
   RRFPauseModeFromNow           = 0,
   RRFPauseModeFromLastComponent = 1,
-  RRFPauseModeToABSTime   = 2
+  RRFPauseModeToABSTime         = 2,
+  RRFPauseModeToNextInterval    = 3
 };
 
 @end
