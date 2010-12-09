@@ -24,6 +24,8 @@
   NSInteger secondsToPause;
   bool shouldStartFromRegValue;
   IBOutlet NSTextField *timeDisplay;
+  NSDate *targetDate;
+  NSTimer *updateTimer;
 }
 
 // PROTOCOL PROPERTIES
@@ -180,6 +182,11 @@
  THIS IS A CONFUSING AND AMBIGUOUS CONFIGURATION!!!
  */
 - (NSInteger)secondsToPauseForNextInterval: (NSInteger)givenSeconds;
+
+/**
+ Update the display to read remaining minutes left in pause
+ */
+- (void)updateTimeDisplay: (NSTimer *)theTimer;
 
 
 #pragma mark Preference Keys

@@ -38,7 +38,16 @@
 - (void)begin {
   [self performSelector:@selector(end) 
              withObject:self afterDelay:secondsToPause];
-  DLog(@"Begin pause for %d seconds",secondsToPause);
+  // logging....
+  NSLog(@"RRFPause - Target Time: %@",[targetDate description]);
+  DLog(@"RRFPause(begin) - Begin pause for %d seconds",secondsToPause);
+  // begin the update display timer
+  updateTimer =
+  [NSTimer scheduledTimerWithTimeInterval:60.0
+                                   target:self
+                                 selector:@selector(updateTimeDisplay:)
+                                 userInfo:nil
+                                  repeats:YES];
 }
 
 /**
@@ -147,6 +156,8 @@
     secondsToPause = 1;
   }
   
+  targetDate = [[NSDate dateWithTimeIntervalSinceNow:secondsToPause] retain];
+  
   // LOAD NIB
   ///////////
   if([NSBundle loadNibNamed:RRFPauseMainNibNameKey owner:self]) {
@@ -157,9 +168,7 @@
     [self registerError:@"Could not load Nib file"];
   }
   
-  // logging
-  NSLog(@"RRFPause - Target Time: %@",
-        [[NSDate dateWithTimeIntervalSinceNow:secondsToPause] description]);
+
 }
 
 /**
@@ -180,7 +189,7 @@
    Perform any and all finalization required by component
 */
 - (void)tearDown {
-    
+  [updateTimer invalidate];
 }
 /**
    Return the main view that should be presented to the subject
@@ -265,10 +274,10 @@
   DLog(@"RRFPause(ABSTime) - Scheduled Time {day:%d hrs: %d min: %d}",
        [comps day],[comps hour],[comps minute]);
   // create target date from components
-  NSDate *targetDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
-  DLog(@"RRFPause(ABSTime) - Target Time %@",[targetDate description]);
+  NSDate *_targetDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+  DLog(@"RRFPause(ABSTime) - Target Time %@",[_targetDate description]);
   // return the time interval between the two dates
-  return [targetDate timeIntervalSinceNow];
+  return [_targetDate timeIntervalSinceNow];
 }
 
 /**
@@ -308,7 +317,6 @@
   DLog(@"RRFPause(RelInterval) - Given Seconds:%d",targetSecs);
   // prepare and return values
   if(targetHrs) {
-    
     DLog(@"RRFPause(RelInterval) - Handler:Hours Parser");
     [comps setHour:[comps hour]+targetHrs];
     [comps setMinute:targetMins];
@@ -349,6 +357,14 @@
   return -1;
 }      
 
+- (void)updateTimeDisplay: (NSTimer *)theTimer {
+  // remaining minutes
+  NSInteger remMinutes = [targetDate timeIntervalSinceNow] / 60;
+  // update remaining time display
+  [timeDisplay setStringValue:[NSString stringWithFormat:
+                               @"Time Out... %d minutes remain",remMinutes]];
+  DLog(@"RRFPause(updateTimeDisplay) - timestamp:%@",[NSDate description]);
+}
 
 
 #pragma mark Preference Keys
