@@ -287,6 +287,7 @@
           60 ===> the next minute
          120 ===> the minute after next
         3600 ===> the next hour
+        3660 ===> the next time a one minute mark occurs
       3600*2 ===> the hour after next
     3600*3/2 ===> the next hour and a half mark that occurs
 
@@ -318,7 +319,12 @@
   // prepare and return values
   if(targetHrs) {
     DLog(@"RRFPause(RelInterval) - Handler:Hours Parser");
-    [comps setHour:[comps hour]+targetHrs];
+    // if minute mark has passed
+    if(targetMins<=[comps minute]) {
+      [comps setHour:[comps hour]+targetHrs];
+    } else { // minute mark has not passed
+      [comps setHour:[comps hour]+targetHrs-1];
+    }
     [comps setMinute:targetMins];
     [comps setSecond:targetSecs];
     DLog(@"RRFPause(RelInterval) - Target Time:%@",
@@ -327,12 +333,16 @@
     return [[[NSCalendar currentCalendar] dateFromComponents:comps]
             timeIntervalSinceNow];
   }
+  // if we are here, then no hours are provided...
+  // so sum minute component
   if(targetMins) {
     DLog(@"RRFPause(RelInterval) - Handler:Minutes Parser");
-    if(targetMins<=[comps minute]) {
-      [comps setHour:[comps hour]+1];
+    // if second mark has passed
+    if(targetSecs<=[comps second]) {
+      [comps setMinute:[comps minute]+targetMins];
+    } else { // second mark has not passed
+      [comps setMinute:[comps minute]+targetMins-1];
     }
-    [comps setMinute:targetMins];
     [comps setSecond:targetSecs];
     DLog(@"RRFPause(RelInterval) - Target Time:%@",
          [[[NSCalendar currentCalendar] dateFromComponents:comps]
@@ -342,10 +352,7 @@
   }
   if(targetSecs) {
     DLog(@"RRFPause(RelInterval) - Handler:Seconds Parser");
-    if(!targetSecs<=[comps second]) {
-      [comps setMinute:[comps minute]+1];
-    }
-    [comps setSecond:targetSecs];
+    [comps setSecond:[comps second]+targetSecs];
     DLog(@"RRFPause(RelInterval) - Target Time:%@",
          [[[NSCalendar currentCalendar] dateFromComponents:comps]
           description]);
