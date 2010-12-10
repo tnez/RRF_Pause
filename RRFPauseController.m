@@ -137,14 +137,14 @@
       DLog(@"RRFPause - Mode:RRFPauseModeToABSTime");            
       secondsToPause =
       [self secondsToPauseForABSTime:
-       [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue]];
+       [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue]] + 1;
       break;
       
     case RRFPauseModeToNextInterval:
       DLog(@"RRFPause - Mode:RRFPauseModeToNextInterval");
       secondsToPause = 
       [self secondsToPauseForNextInterval:
-       [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue]];
+       [[definition valueForKey:RRFPauseDurationKey] unsignedIntegerValue]] + 1;
       break;
 
   default:
@@ -158,7 +158,8 @@
     secondsToPause = 1;
   }
   
-  targetDate = [[NSDate dateWithTimeIntervalSinceNow:secondsToPause] retain];
+  targetDate =
+  [[NSDate dateWithTimeIntervalSinceNow:secondsToPause] retain];
   
   // LOAD NIB
   ///////////
@@ -273,7 +274,7 @@
   // modify our components to match
   [comps setMinute:min];
   [comps setHour:hrs];
-  DLog(@"RRFPause(ABSTime) - Scheduled Time {day:%d hrs: %d min: %d}",
+  DLog(@"RRFPause(ABSTime) - Scheduled Time {day:%d hrs:%d min:%d}",
        [comps day],[comps hour],[comps minute]);
   // create target date from components
   NSDate *_targetDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
@@ -368,11 +369,12 @@
 
 - (void)updateTimeDisplay: (NSTimer *)theTimer {
   // remaining minutes
-  NSInteger remMinutes = [targetDate timeIntervalSinceNow] / 60;
+  NSInteger remMinutes = ([targetDate timeIntervalSinceNow]+1) / 60;
   // update remaining time display
   [timeDisplay setStringValue:[NSString stringWithFormat:
                                @"Time Out... %d minutes remain",remMinutes]];
-  DLog(@"RRFPause(updateTimeDisplay) - timestamp:%@",[NSDate description]);
+  DLog(@"RRFPause(updateTimeDisplay) - timestamp:%@",
+       [[NSDate date] description]);
 }
 
 
