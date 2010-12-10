@@ -41,6 +41,8 @@
   // logging....
   NSLog(@"RRFPause - Target Time: %@",[targetDate description]);
   DLog(@"RRFPause(begin) - Begin pause for %d seconds",secondsToPause);
+  // initial update of the time display
+  [self updateTimeDisplay:nil];
   // begin the update display timer
   updateTimer =
   [NSTimer scheduledTimerWithTimeInterval:60.0
