@@ -82,12 +82,28 @@
 			<key>enumeratedList</key>
 			<array>
 				<string>From This Point</string>
-				<string>From Beginning of Last Component</string>
+				<string>From Beginning of Refernced Component</string>
 				<string>Absolute Time (0000 specified in military)</string>
 				<string>Next Interval As Relative Time (in seconds)</string>
 			</array>
 			<key>help</key>
 			<string>The method by which the pause duration will be evaluated</string>
+		</dict>
+		<dict>
+			<key>optionIdentifier</key>
+			<string>RRFPauseComponentReference</string>
+			<key>displayName</key>
+			<string>Component Reference</string>
+			<key>type</key>
+			<integer>0</integer>
+			<key>default</key>
+			<string></string>
+			<key>allowsEdit</key>
+			<true/>
+			<key>allowsNull</key>
+			<true/>
+			<key>help</key>
+			<string>This is the task ID of the component you wish to reference if using a component referencing pause mode</string>
 		</dict>
 	</array>
 </dict>

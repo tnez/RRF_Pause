@@ -127,10 +127,10 @@
       DLog(@"RRFPause - Mode:RRFPauseModeFromNow");
       break;
         
-  case RRFPauseModeFromLastComponent:
-      // TODO: Pause From Last Component Mode
-      [self registerError:@"Specified pause mode is not yet supported"];
-      DLog(@"RRFPause - Mode:RRFPauseModeFromLastComponent");
+  case RRFPauseModeFromComponent:
+      DLog(@"RRFPause - Mode:RRFPauseModeFromComponent");
+      // TODO: implement
+      [self registerError:@"Pause mode not yet supported"];
       break;
 
     case RRFPauseModeToABSTime:
@@ -386,6 +386,7 @@ NSString * const RRFPauseTaskNameKey = @"RRFPauseTaskName";
 NSString * const RRFPauseDataDirectoryKey = @"RRFPauseDataDirectory";
 NSString * const RRFPauseDurationKey = @"RRFPauseDuration";
 NSString * const RRFPauseModeKey = @"RRFPauseMode";
+NSString * const RRFPauseComponentReferenceKey = @"RRFPauseComponentReference";
 
 
 

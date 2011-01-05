@@ -197,6 +197,7 @@ extern NSString * const RRFPauseTaskNameKey;
 extern NSString * const RRFPauseDataDirectoryKey;
 extern NSString * const RRFPauseDurationKey;
 extern NSString * const RRFPauseModeKey;
+extern NSString * const RRFPauseComponentReferenceKey;
 
 
 #pragma mark Internal Strings
@@ -210,7 +211,7 @@ extern NSString * const RRFPauseMainNibNameKey;
 ////////////////////////////////////////
 enum {
   RRFPauseModeFromNow           = 0,
-  RRFPauseModeFromLastComponent = 1,
+  RRFPauseModeFromComponent     = 1,
   RRFPauseModeToABSTime         = 2,
   RRFPauseModeToNextInterval    = 3
 };
