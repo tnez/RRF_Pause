@@ -135,7 +135,29 @@
         
   case RRFPauseModeFromComponent:
       DLog(@"RRFPause - Mode:RRFPauseModeFromComponent");
-      // TODO: implement
+      // get specified pause value
+      NSUInteger specifiedPValue = [[definition valueForKey:RRFPauseDurationKey]
+                                    unsignedIntegerValue] + 1;
+      // get start value from specified component
+      NSDate *compStart = 
+        [[delegate registryForLastRunForTask:
+          [definition valueForKey:RRFPauseComponentReferenceKey]]
+         valueForKey:@"start"];
+      // if we got a valid start value
+      if(compStart) {
+        // add specified duration to start value for component
+        NSDate *futureDate = [compStart initWithTimeInterval:specifiedPValue
+                                                   sinceDate:compStart];
+        secondsToPause = [futureDate timeIntervalSinceNow];
+        DLog(@"Specified Seconds:%d",specifiedPValue);
+        DLog(@"Start Value:%@ of Component:%@",compStart,
+             [definition valueForKey:RRFPauseComponentReferenceKey]);
+      } else { // no valid start date
+        // ... log error TODO: change to ELog
+        DLog(@"No value found for start date for component:%@",
+             [definition valueForKey:RRFPauseComponentReferenceKey]);
+      }
+
       [self registerError:@"Pause mode not yet supported"];
       break;
 
