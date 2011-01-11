@@ -36,10 +36,16 @@
    Start the component - will receive this message from the component controller
 */
 - (void)begin {
+  // add check in case seconds to pause is invalid
+  if(secondsToPause<1 || secondsToPause>43200) {
+    // we will default to 5 seconds if we deem our value invalid
+    secondsToPause = 5;
+    DLog(@"Seconds to pause deemed invalid (%d sec)",secondsToPause);
+  }
   [self performSelector:@selector(end) 
              withObject:self afterDelay:secondsToPause];
   // logging....
-  NSLog(@"RRFPause - Target Time: %@",[targetDate description]);
+  DLog(@"RRFPause - Target Time: %@",[targetDate description]);
   DLog(@"RRFPause(begin) - Begin pause for %d seconds",secondsToPause);
   // initial update of the time display
   [self updateTimeDisplay:nil];
