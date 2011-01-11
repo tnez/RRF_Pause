@@ -139,10 +139,10 @@
       NSUInteger specifiedPValue = [[definition valueForKey:RRFPauseDurationKey]
                                     unsignedIntegerValue] + 1;
       // get start value from specified component
-      NSDate *compStart = 
-        [[delegate registryForLastRunForTask:
-          [definition valueForKey:RRFPauseComponentReferenceKey]]
-         valueForKey:@"start"];
+      NSDate *compStart =
+      [[delegate registryForRunWithOffset:0 
+                                  forTask:[definition valueForKey:RRFPauseComponentReferenceKey]]
+                          valueForKey:@"start"];
       // if we got a valid start value
       if(compStart) {
         // add specified duration to start value for component
@@ -157,8 +157,6 @@
         DLog(@"No value found for start date for component:%@",
              [definition valueForKey:RRFPauseComponentReferenceKey]);
       }
-
-      [self registerError:@"Pause mode not yet supported"];
       break;
 
     case RRFPauseModeToABSTime:
