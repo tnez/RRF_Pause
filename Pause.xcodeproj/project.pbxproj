@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4009293612DF992B00392AD5 /* TKUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4009293512DF992B00392AD5 /* TKUtility.framework */; };
 		401F076C1254F8FB00E31086 /* TKComponentConfigurationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5EBF1250B59C00437416 /* TKComponentConfigurationView.m */; };
 		401F076D1254F8FB00E31086 /* TKComponentOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5EC11250B59C00437416 /* TKComponentOption.m */; };
 		401F076E1254F8FB00E31086 /* TKComponentStringOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5EC31250B59C00437416 /* TKComponentStringOption.m */; };
@@ -16,10 +17,7 @@
 		401F07721254F8FB00E31086 /* Mock_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5ED41250B59C00437416 /* Mock_AppDelegate.m */; };
 		401F07731254F8FB00E31086 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5ED51250B59C00437416 /* main.m */; };
 		401F07741254F8FB00E31086 /* TKComponentEnumOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5ECB1250B59C00437416 /* TKComponentEnumOption.m */; };
-		401F07811254F97C00E31086 /* TKUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40340010122D5809003CABA9 /* TKUtility.framework */; };
-		401F078E1254F9C800E31086 /* TKUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 40340010122D5809003CABA9 /* TKUtility.framework */; };
 		4034000D122D57F9003CABA9 /* RRFPauseMainNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4034000C122D57F9003CABA9 /* RRFPauseMainNib.xib */; };
-		40340011122D5809003CABA9 /* TKUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40340010122D5809003CABA9 /* TKUtility.framework */; };
 		404B5EE01250B8C500437416 /* EnumOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ECF1250B59C00437416 /* EnumOption.xib */; };
 		404B5EE11250B8C500437416 /* PathOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ED11250B59C00437416 /* PathOption.xib */; };
 		404B5EE21250B8C500437416 /* MockApplication.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ECD1250B59C00437416 /* MockApplication.xib */; };
@@ -30,7 +28,6 @@
 		40A8AFD412A84460008E712C /* RRFPauseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A8AFD312A84460008E712C /* RRFPauseController.m */; };
 		40A8AFDB12A84522008E712C /* RRFPauseManifest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40A8AFDA12A84522008E712C /* RRFPauseManifest.plist */; };
 		40A8AFDC12A84522008E712C /* RRFPauseManifest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40A8AFDA12A84522008E712C /* RRFPauseManifest.plist */; };
-		40C04C52122D5921003E8D1C /* TKUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 40340010122D5809003CABA9 /* TKUtility.framework */; };
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -52,7 +49,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				401F078E1254F9C800E31086 /* TKUtility.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +68,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				40C04C52122D5921003E8D1C /* TKUtility.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,9 +78,9 @@
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		4009293512DF992B00392AD5 /* TKUtility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TKUtility.framework; path = /Library/Frameworks/TKUtility.framework; sourceTree = "<absolute>"; };
 		40340006122D575E003CABA9 /* RRFPause_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRFPause_Prefix.pch; sourceTree = "<group>"; };
 		4034000C122D57F9003CABA9 /* RRFPauseMainNib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RRFPauseMainNib.xib; sourceTree = "<group>"; };
-		40340010122D5809003CABA9 /* TKUtility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TKUtility.framework; sourceTree = "<group>"; };
 		404B5EB61250B54E00437416 /* MockApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		404B5EB81250B54E00437416 /* MockApplication-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MockApplication-Info.plist"; path = "Library/Xcode/Project Templates/Bundle/RRF Bundle/MockApplication-Info.plist"; sourceTree = DEVELOPER_DIR; };
 		404B5EBE1250B59C00437416 /* TKComponentConfigurationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TKComponentConfigurationView.h; sourceTree = "<group>"; };
@@ -124,7 +119,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				401F07811254F97C00E31086 /* TKUtility.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */,
-				40340011122D5809003CABA9 /* TKUtility.framework in Frameworks */,
+				4009293612DF992B00392AD5 /* TKUtility.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
+				4009293512DF992B00392AD5 /* TKUtility.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -193,7 +188,6 @@
 		1058C7AEFEA557BF11CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				40340010122D5809003CABA9 /* TKUtility.framework */,
 				089C167FFE841241C02AAC07 /* AppKit.framework */,
 				D2F7E65807B2D6F200F64583 /* CoreData.framework */,
 				089C1672FE841209C02AAC07 /* Foundation.framework */,
@@ -402,7 +396,7 @@
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -440,6 +434,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_ENABLE_OBJC_GC = supported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
