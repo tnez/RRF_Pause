@@ -18,6 +18,8 @@
 		401F07731254F8FB00E31086 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5ED51250B59C00437416 /* main.m */; };
 		401F07741254F8FB00E31086 /* TKComponentEnumOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 404B5ECB1250B59C00437416 /* TKComponentEnumOption.m */; };
 		4034000D122D57F9003CABA9 /* RRFPauseMainNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4034000C122D57F9003CABA9 /* RRFPauseMainNib.xib */; };
+		403455FD12DFF80800532AC4 /* TKUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4009293512DF992B00392AD5 /* TKUtility.framework */; };
+		403455FE12DFF81C00532AC4 /* TKUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4009293512DF992B00392AD5 /* TKUtility.framework */; };
 		404B5EE01250B8C500437416 /* EnumOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ECF1250B59C00437416 /* EnumOption.xib */; };
 		404B5EE11250B8C500437416 /* PathOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ED11250B59C00437416 /* PathOption.xib */; };
 		404B5EE21250B8C500437416 /* MockApplication.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404B5ECD1250B59C00437416 /* MockApplication.xib */; };
@@ -49,6 +51,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				403455FE12DFF81C00532AC4 /* TKUtility.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				403455FD12DFF80800532AC4 /* TKUtility.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
