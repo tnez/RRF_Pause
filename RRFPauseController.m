@@ -42,15 +42,14 @@
     secondsToPause = 5;
     DLog(@"Seconds to pause deemed invalid (%d sec)",secondsToPause);
   }
-  [self performSelector:@selector(end) 
-             withObject:self afterDelay:secondsToPause];
+  [self performSelector:@selector(end) withObject:nil
+             afterDelay:secondsToPause];
   // logging....
   DLog(@"RRFPause - Target Time: %@",[targetDate description]);
   DLog(@"RRFPause(begin) - Begin pause for %d seconds",secondsToPause);
   // initial update of the time display
   [self updateTimeDisplay:nil];
   // begin the update display timer
-  updateTimer =
   [NSTimer scheduledTimerWithTimeInterval:60.0
                                    target:self
                                  selector:@selector(updateTimeDisplay:)
@@ -218,7 +217,6 @@
    Perform any and all finalization required by component
 */
 - (void)tearDown {
-  [updateTimer invalidate];
 }
 /**
    Return the main view that should be presented to the subject
@@ -396,9 +394,14 @@
 - (void)updateTimeDisplay: (NSTimer *)theTimer {
   // remaining minutes
   NSInteger remMinutes = ([targetDate timeIntervalSinceNow]+1) / 60;
-  // update remaining time display
-  [timeDisplay setStringValue:[NSString stringWithFormat:
-                               @"Time Out... %d minutes remain",remMinutes]];
+  if(remMinutes>0) {
+    // update remaining time display
+    [timeDisplay setStringValue:[NSString stringWithFormat:
+                                 @"Time Out... %d minutes remain",remMinutes]];
+  } else {
+    // invalidate timer
+    [theTimer invalidate];
+  }
   DLog(@"RRFPause(updateTimeDisplay) - timestamp:%@",
        [[NSDate date] description]);
 }
